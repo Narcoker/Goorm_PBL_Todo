@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+## [구름_PBL] Todo 앱 제작
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 수행기간: 7/10(월) ~ 7/16(일)
+- 과정
+  - 유저 시나리오 작성
+  - 서비스 플로우(유저 플로우) 작성
+  - 요구사항 분석
+  - 최종 결과물 제출
 
-## Available Scripts
+## 최종 결과물
 
-In the project directory, you can run:
+## 유저 시나리오 작성
 
-### `npm start`
+![Alt text](image.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 요구사항 분석
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### 용어
 
-### `npm test`
+- 작업: 사용자 웹 서비스에 등록할 해야할 일
+- 작업 상태: 작업의 상태를 나타내며 `시작 전`, `진행 중`, `완료` 의 3가지 상태가 존재
+- 작업 목록 창: 등록된 작업의 목록을 출력하는 컴포넌트
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 작업 등록
 
-### `npm run build`
+> 작업을 등록한다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 입력 창에 `작업 명`, `시작일과 종료일`를 입력하고  
+  `Enter` 나 `등록 버튼`을 누르면 `작업 목록 창의 최상단에 추가`된다.
+- 작업 상태는 `시작 전`으로 설정된다.
+- 등록된 작업은 브라우저을 껐다가 켜도 사라지지 않는다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 작업 수정
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> 등록된 작업을 수정한다.
 
-### `npm run eject`
+- 작업 목록 창에 있는 등록된 `작업 명`, `시작일과 종료일`을 수정할 수 있다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 작업 순위 수정
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> 등록된 작업의 우선 순위를 수정한다.
+> 작업 목록창에서, 작업이 상단에 위치할 수록 우선 순위가 높은 작업이다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 수정할 작업을 드래그해서 위치시키고 싶은 작업 목록 창 공간에 드롭하면  
+  그 공간으로 작업이 이동한다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### 작업 삭제
 
-## Learn More
+> 등록된 작업을 웹 서비스 상에서 삭제한다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `작업 목록 창 밖으로 드래그 엔 드롭` 하거나 `삭제 버튼`을 누르면  
+  `"삭제하면 되돌릴 수 없습니다."` 라는 경고 모달을 출력한다.
+- 경고 모달에서 `확인 버튼`을 누르면 해당 작업이 삭제된다.
+  - 삭제된 작업은 되돌릴 수 없다.
+- 경고 모달에서 `취소 버튼`을 누르면 해당 작업이 삭제되지 않는다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 작업 상태 수정
 
-### Code Splitting
+> 작업을 완료 처리한다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 완료되지 않은 작업에 `토글 버튼`을 누르면 `작업 명에 취소선`이 생긴다.
+- 완료된 작업 즉, 취소선이 생긴 작업의 `토글 버튼`을 누르면 `취소선`이 사라진다.
