@@ -21,12 +21,27 @@ export const todoListSlice = createSlice({
     editTodo: (state) => {
       console.log("editTodo");
     },
+    changeTodoState: (state, { payload: uuid }) => {
+      console.log("changeTodoState");
+      const targetIndex = state.findIndex((todo) => todo.uuid === uuid);
+      switch (state[targetIndex].state) {
+        case WORK_STATE.BEFORE_START:
+          state[targetIndex].state = WORK_STATE.IN_PROGRESS;
+          break;
+        case WORK_STATE.IN_PROGRESS:
+          state[targetIndex].state = WORK_STATE.END;
+          break;
+        case WORK_STATE.END:
+          state[targetIndex].state = WORK_STATE.BEFORE_START;
+          break;
+        default:
+          break;
+      }
+    },
     removeTodo: (state, { payload: uuid }) => {
       console.log("removeTodo");
-      const index = state.findIndex((todo) => todo.uuid === uuid);
-      if (index !== -1) {
-        state.splice(index, 1);
-      }
+      const targetIndex = state.findIndex((todo) => todo.uuid === uuid);
+      targetIndex !== -1 && state.splice(targetIndex, 1);
     },
     addDetailTodo: (state) => {
       console.log("addDetailTodo");
@@ -43,6 +58,7 @@ export const todoListSlice = createSlice({
 export const {
   addTodo,
   editTodo,
+  changeTodoState,
   removeTodo,
   addDetailTodo,
   editedDetailTodo,

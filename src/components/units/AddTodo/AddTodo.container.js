@@ -16,9 +16,7 @@ function AddTodoContainer() {
     setInputTodo(e.target.value);
   };
   const handleKeyDownEnter = (e, text) => {
-    if (e.key === "Enter") {
-      handleAddTodo(text);
-    }
+    e.key === "Enter" && handleAddTodo(text);
   };
   useEffect(() => {
     console.log(todoList);

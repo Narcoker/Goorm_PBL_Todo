@@ -13,6 +13,7 @@ export const Paragraph = styled.p`
   color: #bbbbbb;
   font-size: ${(props) => (props.$big ? "1.5em" : "1em")};
   animation: 1.5s ${fadeIn} both ease 1s;
+  user-select: none;
 `;
 
 export const InputWork = styled.input`

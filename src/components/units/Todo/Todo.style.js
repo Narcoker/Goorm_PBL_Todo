@@ -4,13 +4,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Wrapper = styled.div`
   display: flex;
-  background-color: white;
+  background-image: linear-gradient(-225deg, white 0%, #efe9f0 100%);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 10px;
   margin-bottom: 10px;
   transition: 0.3s;
   &:hover {
     transform: scale(1.05);
+  }
+  position: relative;
+  &:before {
+    content: "";
+    background-color: ${(props) =>
+      props.$state === WORK_STATE.END ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0)"};
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: 0.5s;
   }
 `;
 
@@ -26,18 +41,25 @@ export const StateCircle = styled.div`
   width: 39px;
   height: 39px;
   border-radius: 50%;
-  background-color: ${(props) => {
-    return props.$state === WORK_STATE.BEFORE_START
-      ? "#1e1e1e"
-      : WORK_STATE.IN_PROGRESS
-      ? "yellow"
-      : "green";
+  background-image: ${(props) => {
+    switch (props.$state) {
+      case WORK_STATE.BEFORE_START:
+        return "linear-gradient(320deg, #29323c 0%, #485563 100%)";
+      case WORK_STATE.IN_PROGRESS:
+        return "linear-gradient(320deg, #f6d365 0%, #fda085 100%)";
+      case WORK_STATE.END:
+        return "linear-gradient(320deg, #0ba360 0%, #3cba92 100%)";
+      default:
+        return "none";
+    }
   }};
+  box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
     transform: scale(1.2);
+    box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -54,6 +76,8 @@ export const Title = styled.h1`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-decoration: ${(props) =>
+    props.$state === WORK_STATE.END ? "line-through" : "none"};
 `;
 
 export const DataWrapper = styled.div`

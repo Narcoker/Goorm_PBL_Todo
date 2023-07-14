@@ -24,4 +24,5 @@ export const NotFoundTodoList = styled.div`
   width: 100%;
   height: 100%;
   color: #515151;
+  user-select: none;
 `;

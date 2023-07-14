@@ -13,6 +13,7 @@ export const Logo = styled.h1`
   font-weight: 400;
   margin-bottom: 55px;
   animation: 1.5s ${fadeIn} both ease;
+  user-select: none;
 
   &:before {
     content: attr(data-text);

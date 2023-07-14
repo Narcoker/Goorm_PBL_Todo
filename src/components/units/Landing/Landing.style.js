@@ -21,6 +21,7 @@ export const Paragraph = styled.p`
   color: #bbbbbb;
   text-align: center;
   animation: 1.5s ${fadeIn} both ease 1s;
+  user-select: none;
 `;
 
 export const StartButton = styled.button`

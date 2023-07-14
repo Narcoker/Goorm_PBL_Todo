@@ -21,4 +21,5 @@ export const Text = styled.p`
   display: block;
   color: white;
   text-align: center;
+  user-select: none;
 `;

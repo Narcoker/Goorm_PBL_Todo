@@ -2,14 +2,19 @@ import React from "react";
 import * as S from "./Todo.style";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function TodoPresenter({ todo, handleRemoveTodo }) {
+function TodoPresenter({ todo, handleRemoveTodo, handleChangeTodoState }) {
   return (
-    <S.Wrapper>
+    <S.Wrapper $state={todo.state}>
       <S.ContentsLeft>
-        <S.StateCircle $state={todo.state} />
+        <S.StateCircle
+          $state={todo.state}
+          onClick={() => {
+            handleChangeTodoState(todo.uuid);
+          }}
+        />
       </S.ContentsLeft>
       <S.ContentsCenter>
-        <S.Title>{todo.title}</S.Title>
+        <S.Title $state={todo.state}>{todo.title}</S.Title>
         <S.DataWrapper>
           <S.Date>시작 일: {todo.startDate}</S.Date>
           <S.Date $right>종료 일: {todo.endDate}</S.Date>
