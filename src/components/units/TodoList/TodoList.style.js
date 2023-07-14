@@ -12,4 +12,5 @@ export const Wrapper = styled.div`
   position: absolute;
   top: 132px;
   left: 180px;
+  overflow: auto;
 `;

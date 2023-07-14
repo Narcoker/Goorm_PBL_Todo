@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { WORK_STATE } from "../../components/commons/constants";
+import { WORK_STATE } from "../constants";
 import { v4 as uuidv4 } from "uuid";
 export const todoListSlice = createSlice({
   name: "todoList",
@@ -21,8 +21,12 @@ export const todoListSlice = createSlice({
     editTodo: (state) => {
       console.log("editTodo");
     },
-    removeTodo: (state) => {
+    removeTodo: (state, { payload: uuid }) => {
       console.log("removeTodo");
+      const index = state.findIndex((todo) => todo.uuid === uuid);
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
     },
     addDetailTodo: (state) => {
       console.log("addDetailTodo");

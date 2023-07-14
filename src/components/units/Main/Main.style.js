@@ -11,23 +11,22 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  border: 1px solid red;
   flex: 10;
 `;
 
 export const ContainerLeft = styled.div`
   flex: 1;
-  border: 1px solid yellow;
   position: relative;
 `;
 
 export const ContainerRight = styled.div`
   flex: 1;
-  border: 1px solid yellow;
 `;
 
 export const Footer = styled.div`
   flex: 1;
   width: 100%;
-  border: 1px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

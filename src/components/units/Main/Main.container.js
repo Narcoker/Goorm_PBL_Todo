@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MainPresenter from "./Main.presenter";
-import { MODE } from "../../commons/constants";
+import { MODE } from "../../../app/constants";
 
 function MainContainer() {
   const [mode, setMode] = useState(MODE.ADD);

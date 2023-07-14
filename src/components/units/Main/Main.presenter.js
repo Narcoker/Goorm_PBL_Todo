@@ -2,8 +2,9 @@ import React from "react";
 import * as S from "./Main.style";
 import Background from "../../commons/Background/Background";
 import TodoList from "../TodoList/TodoList";
-import { MODE } from "../../commons/constants";
+import { MODE } from "../../../app/constants";
 import AddTodo from "../AddTodo/AddTodo";
+import Quote from "../Quote/Quote";
 
 function MainPresenter({ mode, setMode }) {
   return (
@@ -19,7 +20,9 @@ function MainPresenter({ mode, setMode }) {
           {mode === MODE.EDIT && null}
         </S.ContainerRight>
       </S.Container>
-      <S.Footer></S.Footer>
+      <S.Footer>
+        <Quote />
+      </S.Footer>
     </S.Wrapper>
   );
 }

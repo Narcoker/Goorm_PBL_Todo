@@ -5,7 +5,7 @@ export const MODE = {
 };
 // 작업 상태
 export const WORK_STATE = {
-  BEFORE_START: "BEFORE_START",
-  IN_PROGRESS: "IN_PROGRESS",
-  END: "END",
+  BEFORE_START: "시작 전",
+  IN_PROGRESS: "진행 중",
+  END: "완료",
 };
