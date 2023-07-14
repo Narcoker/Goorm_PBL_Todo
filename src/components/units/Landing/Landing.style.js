@@ -18,7 +18,6 @@ export const Contents = styled.div`
 `;
 
 export const Paragraph = styled.p`
-  font-family: "Inter", sans-serif;
   color: #bbbbbb;
   text-align: center;
   animation: 1.5s ${fadeIn} both ease 1s;

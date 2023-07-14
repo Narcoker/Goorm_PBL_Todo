@@ -6,8 +6,6 @@ import { MODE } from "../../commons/constants";
 import AddTodo from "../AddTodo/AddTodo";
 
 function MainPresenter({ mode, setMode }) {
-  console.log(mode, MODE.ADD);
-  console.log(mode === MODE.ADD);
   return (
     <S.Wrapper>
       <Background />

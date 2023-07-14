@@ -18,6 +18,4 @@ function LandingPresenter({ handleButton }) {
   );
 }
 
-
-
 export default LandingPresenter;
