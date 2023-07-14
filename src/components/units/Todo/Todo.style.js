@@ -105,7 +105,7 @@ export const StyledIcon = styled(FontAwesomeIcon)`
   font-size: 24px;
   transition: 0.3s;
   cursor: pointer;
-
+  z-index: 100;
   &:hover {
     transform: scale(1.2);
     color: #e33c3c;

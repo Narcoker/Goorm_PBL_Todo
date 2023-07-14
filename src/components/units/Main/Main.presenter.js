@@ -5,8 +5,9 @@ import TodoList from "../TodoList/TodoList";
 import { MODE } from "../../../app/constants";
 import AddTodo from "../AddTodo/AddTodo";
 import Quote from "../Quote/Quote";
+import DetailTodo from "../DetailTodo/DetailTodo";
 
-function MainPresenter({ mode, setMode }) {
+function MainPresenter({ pageState }) {
   return (
     <S.Wrapper>
       <Background />
@@ -15,9 +16,8 @@ function MainPresenter({ mode, setMode }) {
           <TodoList />
         </S.ContainerLeft>
         <S.ContainerRight>
-          <AddTodo />
-          {mode === MODE.ADD && AddTodo}
-          {mode === MODE.EDIT && null}
+          {pageState === MODE.ADD && <AddTodo />}
+          {pageState === MODE.EDIT && <DetailTodo />}
         </S.ContainerRight>
       </S.Container>
       <S.Footer>

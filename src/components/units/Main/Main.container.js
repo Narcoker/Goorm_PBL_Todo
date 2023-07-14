@@ -1,11 +1,24 @@
-import React, { useState } from "react";
 import MainPresenter from "./Main.presenter";
-import { MODE } from "../../../app/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { setModeADD, setModeEDIT } from "../../../app/PageMode/pageModeSlice";
 
 function MainContainer() {
-  const [mode, setMode] = useState(MODE.ADD);
+  const dispatch = useDispatch();
+  const pageState = useSelector((state) => state.pageMode.mode);
+  const handleSetModeADD = () => {
+    dispatch(setModeADD());
+  };
+  const handleSetModeEDIT = () => {
+    dispatch(setModeEDIT());
+  };
 
-  return <MainPresenter mode={mode} setMode={setMode} />;
+  return (
+    <MainPresenter
+      pageState={pageState}
+      handleSetModeADD={handleSetModeADD}
+      handleSetModeEDIT={handleSetModeEDIT}
+    />
+  );
 }
 
 export default MainContainer;

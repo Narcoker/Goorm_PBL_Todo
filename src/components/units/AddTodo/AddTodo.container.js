@@ -5,7 +5,7 @@ import { addTodo } from "../../../app/TodoList/todoListSlice";
 
 function AddTodoContainer() {
   const [inputTodo, setInputTodo] = useState("");
-  const todoList = useSelector((state) => state.todoList);
+  const todoList = useSelector((state) => state.todoList.todoList);
   const dispatch = useDispatch();
   const handleAddTodo = (text) => {
     if (!text) return;

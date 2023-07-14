@@ -1,7 +1,7 @@
 // 작업 추가 모드, 작업 수정 모드
 export const MODE = {
-  ADD: Symbol.for("MODE: ADD"),
-  EDIT: Symbol.for("MODE: EDIT"),
+  ADD: "추가 모드",
+  EDIT: "세부 작업 보기 및 수정 모드",
 };
 // 작업 상태
 export const WORK_STATE = {

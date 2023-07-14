@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Todo from "../Todo/Todo";
 
 function TodoListPresenter() {
-  const todoList = useSelector((state) => state.todoList);
+  const todoList = useSelector((state) => state.todoList.todoList);
 
   return (
     <S.Wrapper>

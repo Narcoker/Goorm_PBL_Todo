@@ -21,6 +21,7 @@ export const ContainerLeft = styled.div`
 
 export const ContainerRight = styled.div`
   flex: 1;
+  position: relative;
 `;
 
 export const Footer = styled.div`

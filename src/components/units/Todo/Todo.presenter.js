@@ -2,14 +2,19 @@ import React from "react";
 import * as S from "./Todo.style";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function TodoPresenter({ todo, handleRemoveTodo, handleChangeTodoState }) {
+function TodoPresenter({
+  todo,
+  handleRemoveTodo,
+  handleChangeTodoState,
+  handleSetModeEDIT,
+}) {
   return (
-    <S.Wrapper $state={todo.state}>
+    <S.Wrapper $state={todo.state} onClick={() => handleSetModeEDIT(todo.uuid)}>
       <S.ContentsLeft>
         <S.StateCircle
           $state={todo.state}
-          onClick={() => {
-            handleChangeTodoState(todo.uuid);
+          onClick={(e) => {
+            handleChangeTodoState(e, todo.uuid);
           }}
         />
       </S.ContentsLeft>
@@ -24,8 +29,8 @@ function TodoPresenter({ todo, handleRemoveTodo, handleChangeTodoState }) {
         <S.StateText>{todo.state}</S.StateText>
         <S.StyledIcon
           icon={faTrash}
-          onClick={() => {
-            handleRemoveTodo(todo.uuid);
+          onClick={(e) => {
+            handleRemoveTodo(e, todo.uuid);
           }}
         />
       </S.ContentsRight>

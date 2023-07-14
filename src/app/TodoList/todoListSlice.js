@@ -3,19 +3,22 @@ import { WORK_STATE } from "../constants";
 import { v4 as uuidv4 } from "uuid";
 export const todoListSlice = createSlice({
   name: "todoList",
-  initialState: [],
+  initialState: {
+    todoList: [],
+    selectedDetails: [],
+  },
   reducers: {
     addTodo: (state, { payload: text }) => {
-      //   console.log("addTodo");
+      console.log("addTodo");
       //   console.log("inputTodo: ", text);
-      state.unshift({
+      state.todoList.unshift({
         uuid: uuidv4(),
         title: text,
         startDate: "-",
         endDate: "-",
         state: WORK_STATE.BEFORE_START,
-        EditeMode: false,
-        Detail: [],
+        editeMode: false,
+        details: [],
       });
     },
     editTodo: (state) => {
@@ -23,16 +26,18 @@ export const todoListSlice = createSlice({
     },
     changeTodoState: (state, { payload: uuid }) => {
       console.log("changeTodoState");
-      const targetIndex = state.findIndex((todo) => todo.uuid === uuid);
-      switch (state[targetIndex].state) {
+      const targetIndex = state.todoList.findIndex(
+        (todo) => todo.uuid === uuid
+      );
+      switch (state.todoList[targetIndex].state) {
         case WORK_STATE.BEFORE_START:
-          state[targetIndex].state = WORK_STATE.IN_PROGRESS;
+          state.todoList[targetIndex].state = WORK_STATE.IN_PROGRESS;
           break;
         case WORK_STATE.IN_PROGRESS:
-          state[targetIndex].state = WORK_STATE.END;
+          state.todoList[targetIndex].state = WORK_STATE.END;
           break;
         case WORK_STATE.END:
-          state[targetIndex].state = WORK_STATE.BEFORE_START;
+          state.todoList[targetIndex].state = WORK_STATE.BEFORE_START;
           break;
         default:
           break;
@@ -40,9 +45,23 @@ export const todoListSlice = createSlice({
     },
     removeTodo: (state, { payload: uuid }) => {
       console.log("removeTodo");
-      const targetIndex = state.findIndex((todo) => todo.uuid === uuid);
-      targetIndex !== -1 && state.splice(targetIndex, 1);
+
+      const targetIndex = state.todoList.findIndex(
+        (todo) => todo.uuid === uuid
+      );
+      targetIndex !== -1 && state.todoList.splice(targetIndex, 1);
     },
+
+    setSelectedDetails: (state, { payload: uuid }) => {
+      console.log("setSelectedDetails");
+
+      const targetIndex = state.todoList.findIndex(
+        (todo) => todo.uuid === uuid
+      );
+      console.log(targetIndex);
+      state.selectedDetails = [];
+    },
+
     addDetailTodo: (state) => {
       console.log("addDetailTodo");
     },
@@ -60,6 +79,7 @@ export const {
   editTodo,
   changeTodoState,
   removeTodo,
+  setSelectedDetails,
   addDetailTodo,
   editedDetailTodo,
   removeDetailTodo,

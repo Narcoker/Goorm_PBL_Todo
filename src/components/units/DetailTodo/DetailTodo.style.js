@@ -14,7 +14,26 @@ export const Wrapper = styled.div`
   top: 132px;
   left: 180px;
   overflow: auto;
-  animation: 1s ${fadeIn} ease both 1.5s;
+  animation: ${fadeIn} ease both 1.5s;
+`;
+
+export const CloseButton = styled.div`
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #515151;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: red;
+  }
 `;
 
 export const NotFoundTodoList = styled.div`
