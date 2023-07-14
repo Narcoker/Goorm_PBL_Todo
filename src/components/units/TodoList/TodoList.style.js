@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeIn } from "../../commons/keyframes";
 
 export const Wrapper = styled.div`
   /* width: 653px; */
@@ -13,4 +14,14 @@ export const Wrapper = styled.div`
   top: 132px;
   left: 180px;
   overflow: auto;
+  animation: 1s ${fadeIn} ease both 1.5s;
+`;
+
+export const NotFoundTodoList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #515151;
 `;

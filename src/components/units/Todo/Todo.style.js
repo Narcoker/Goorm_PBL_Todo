@@ -47,9 +47,13 @@ export const ContentsCenter = styled.div`
 `;
 
 export const Title = styled.h1`
+  width: 440px;
   font-weight: 400;
   font-size: 24px;
   margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const DataWrapper = styled.div`

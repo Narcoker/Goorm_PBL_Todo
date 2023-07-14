@@ -8,9 +8,11 @@ function TodoListPresenter() {
 
   return (
     <S.Wrapper>
-      {todoList.map((todo) => (
-        <Todo key={todo.uuid} todo={todo} />
-      ))}
+      {todoList.length ? (
+        todoList.map((todo) => <Todo key={todo.uuid} todo={todo} />)
+      ) : (
+        <S.NotFoundTodoList>등록된 할일이 없습니다</S.NotFoundTodoList>
+      )}
     </S.Wrapper>
   );
 }

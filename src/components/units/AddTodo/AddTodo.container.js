@@ -17,7 +17,6 @@ function AddTodoContainer() {
   };
   const handleKeyDownEnter = (e, text) => {
     if (e.key === "Enter") {
-      e.stopPropagation();
       handleAddTodo(text);
     }
   };
