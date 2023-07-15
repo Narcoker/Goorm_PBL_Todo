@@ -1,16 +1,5 @@
-import React, { useEffect, useState } from "react";
 import * as S from "./Quote.style";
-function QuotePresenter({ Quotes }) {
-  const [top, setTop] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTop((prevTop) =>
-        prevTop <= -21 * (Quotes.length - 1) ? 0 : prevTop - 21
-      );
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
+function QuotePresenter({ Quotes, top }) {
   return (
     <S.Slide>
       <S.SlideInner $top={top}>

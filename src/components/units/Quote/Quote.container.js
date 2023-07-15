@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import QuotePresenter from "./Quote.presenter";
 
 function QuotContainer() {
@@ -25,7 +25,17 @@ function QuotContainer() {
     '"아무리 좋은 계획이라도 그것을 실행하지 않으면 아무 소용이 없다 - 오스카 와일드"',
   ];
 
-  return <QuotePresenter Quotes={Quotes} />;
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTop((prevTop) =>
+        prevTop <= -22 * (Quotes.length - 1) ? 0 : prevTop - 22
+      );
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return <QuotePresenter Quotes={Quotes} top={top} />;
 }
 
 export default QuotContainer;

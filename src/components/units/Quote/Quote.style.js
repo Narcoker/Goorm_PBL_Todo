@@ -22,4 +22,5 @@ export const Text = styled.p`
   color: white;
   text-align: center;
   user-select: none;
+  height: inherit;
 `;
