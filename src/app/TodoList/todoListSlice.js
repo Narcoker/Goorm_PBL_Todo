@@ -8,6 +8,9 @@ export const todoListSlice = createSlice({
     selectedTodo: {},
   },
   reducers: {
+    setTodoList: (state, { payload: { todoList } }) => {
+      state.todoList = todoList;
+    },
     // 계획 Action
     addTodo: (state, { payload: text }) => {
       state.todoList.unshift({
@@ -19,6 +22,7 @@ export const todoListSlice = createSlice({
         editMode: true,
         details: [],
       });
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     editTodo: (state) => {
@@ -30,6 +34,7 @@ export const todoListSlice = createSlice({
 
       targetTodo.startDate = time;
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     editTodoEndTime: (state, { payload: { todoUUID, time } }) => {
@@ -37,6 +42,7 @@ export const todoListSlice = createSlice({
 
       targetTodo.endDate = time;
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     changeTodoState: (state, { payload: uuid }) => {
@@ -52,6 +58,7 @@ export const todoListSlice = createSlice({
       });
 
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     removeTodo: (state, { payload: uuid }) => {
@@ -62,6 +69,7 @@ export const todoListSlice = createSlice({
       const targetTodo = state.todoList.find((todo) => todo.uuid === uuid);
 
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     // 세부 계획 Actions
@@ -79,6 +87,7 @@ export const todoListSlice = createSlice({
       targetTodo.editMode = false;
 
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     editedDetailTodo: (state) => {
@@ -102,6 +111,7 @@ export const todoListSlice = createSlice({
       }
 
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     editDetailTodoEndTime: (state, { payload: { todoUUID, detailTodoUUID, time } }) => {
@@ -120,6 +130,7 @@ export const todoListSlice = createSlice({
       }
 
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     changeDetailTodoState: (state, { payload: { todoUUID, detailTodoUUID } }) => {
@@ -153,6 +164,7 @@ export const todoListSlice = createSlice({
       }
 
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     removeDetailTodo: (state, { payload: { todoUUID, detailTodoUUID } }) => {
@@ -167,11 +179,13 @@ export const todoListSlice = createSlice({
       }
 
       state.selectedTodo = targetTodo;
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
   },
 });
 
 export const {
+  setTodoList,
   addTodo,
   editTodo,
   editTodoStartTime,

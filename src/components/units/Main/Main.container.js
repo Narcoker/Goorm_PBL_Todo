@@ -1,6 +1,8 @@
 import MainPresenter from "./Main.presenter";
 import { useDispatch, useSelector } from "react-redux";
 import { setModeADD, setModeEDIT } from "../../../app/PageMode/pageModeSlice";
+import { useEffect } from "react";
+import { setTodoList } from "../../../app/TodoList/todoListSlice";
 
 function MainContainer() {
   const dispatch = useDispatch();
@@ -11,6 +13,11 @@ function MainContainer() {
   const handleSetModeEDIT = () => {
     dispatch(setModeEDIT());
   };
+
+  useEffect(() => {
+    const todoList = JSON.parse(window.localStorage.getItem("todoList"));
+    dispatch(setTodoList({ todoList }));
+  }, []);
 
   return (
     <MainPresenter
