@@ -1,24 +1,34 @@
-import React, { useEffect } from "react";
-import DetailTodoPresenter from "./DetailTodo.presenter";
-import { useDispatch, useSelector } from "react-redux";
-import { setModeADD } from "../../../app/PageMode/pageModeSlice";
+import React from "react";
+import DetailTodoPresenter from "../DetailTodo/DetailTodo.presenter";
+import {
+  editDetailTodoEndTime,
+  editDetailTodoStartTime,
+  removeDetailTodo,
+} from "../../../app/TodoList/todoListSlice";
+import { useDispatch } from "react-redux";
 
-function DetailTodoContainer() {
+function DetailTodoListContainer({ detailTodo, todoUUID }) {
   const dispatch = useDispatch();
-  const handleSetModeADD = () => {
-    dispatch(setModeADD());
+  const handleRemoveTodo = (e, todoUUID, detailTodoUUID) => {
+    e.stopPropagation();
+    dispatch(removeDetailTodo({ todoUUID, detailTodoUUID }));
   };
-  const todoDetails = useSelector((state) => state.todoList.selectedDetails);
+  const handleEditDetailTodoStartTime = (todoUUID, detailTodoUUID, time) => {
+    dispatch(editDetailTodoStartTime({ todoUUID, detailTodoUUID, time }));
+  };
 
-  useEffect(() => {
-    console.log(todoDetails);
-  }, [todoDetails]);
+  const handleEditDetailTodoEndTime = (todoUUID, detailTodoUUID, time) => {
+    dispatch(editDetailTodoEndTime({ todoUUID, detailTodoUUID, time }));
+  };
   return (
     <DetailTodoPresenter
-      handleSetModeADD={handleSetModeADD}
-      todoDetails={todoDetails}
+      todoUUID={todoUUID}
+      detailTodo={detailTodo}
+      handleRemoveTodo={handleRemoveTodo}
+      handleEditDetailTodoStartTime={handleEditDetailTodoStartTime}
+      handleEditDetailTodoEndTime={handleEditDetailTodoEndTime}
     />
   );
 }
 
-export default DetailTodoContainer;
+export default DetailTodoListContainer;

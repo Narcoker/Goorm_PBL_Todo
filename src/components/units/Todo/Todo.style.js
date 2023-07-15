@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   transition: 0.3s;
   &:hover {
     transform: scale(1.05);
+    z-index: 1000;
   }
   position: relative;
   &:before {
@@ -69,7 +70,6 @@ export const ContentsCenter = styled.div`
 `;
 
 export const Title = styled.h1`
-  width: 440px;
   font-weight: 400;
   font-size: 24px;
   margin-bottom: 5px;

@@ -1,47 +1,117 @@
 import styled from "styled-components";
-import { fadeIn } from "../../commons/keyframes";
+import { WORK_STATE } from "../../../app/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Wrapper = styled.div`
-  /* width: 653px; */
-  width: 68%;
-  /* height: 682px; */
-  height: 80%;
-
-  background-color: rgba(217, 217, 217, 0.22);
-  padding: 52px 33px;
-  border-radius: 20px;
-  position: absolute;
-  top: 132px;
-  left: 180px;
-  overflow: auto;
-  animation: ${fadeIn} ease both 1.5s;
-`;
-
-export const CloseButton = styled.div`
-  display: inline-block;
-  border-radius: 50%;
-  background-color: #515151;
-  width: 20px;
-  height: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  transition: 0.5s;
-
+  /* background-image: linear-gradient(-225deg, white 0%, #efe9f0 100%); */
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 10px;
+  margin: 15px;
+  transition: 0.3s;
   &:hover {
-    background-color: red;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+    z-index: 1000;
+  }
+  position: relative;
+  &:before {
+    content: "";
+    background-color: ${(props) =>
+      props.$state === WORK_STATE.END ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0)"};
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: 0.5s;
   }
 `;
 
-export const NotFoundTodoList = styled.div`
+// 왼쪽
+export const ContentsLeft = styled.div`
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  color: #222222;
-  user-select: none;
+`;
+
+export const StateCircle = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-image: ${(props) => {
+    switch (props.$state) {
+      case WORK_STATE.BEFORE_START:
+        return "linear-gradient(320deg, #29323c 0%, #485563 100%)";
+      case WORK_STATE.IN_PROGRESS:
+        return "linear-gradient(320deg, #f6d365 0%, #fda085 100%)";
+      case WORK_STATE.END:
+        return "linear-gradient(320deg, #0ba360 0%, #3cba92 100%)";
+      default:
+        return "none";
+    }
+  }};
+  box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+// 중앙
+export const ContentsCenter = styled.div`
+  flex: 5;
+`;
+
+export const Title = styled.h1`
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: ${(props) =>
+    props.$state === WORK_STATE.END ? "line-through" : "none"};
+`;
+
+export const DataWrapper = styled.div`
+  display: flex;
+  position: relative;
+`;
+export const Date = styled.p`
+  flex: 1;
+  font-size: 14px;
+`;
+
+// 오른쪽
+export const ContentsRight = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const StateText = styled.p`
+  margin-bottom: 8px;
+  font-size: 12px;
+`;
+
+export const StyledIcon = styled(FontAwesomeIcon)`
+  color: #515151;
+  font-size: 16px;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 100;
+  &:hover {
+    transform: scale(1.2);
+    color: #e33c3c;
+  }
 `;

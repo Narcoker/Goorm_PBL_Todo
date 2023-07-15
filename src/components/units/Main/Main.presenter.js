@@ -5,7 +5,7 @@ import TodoList from "../TodoList/TodoList";
 import { MODE } from "../../../app/constants";
 import AddTodo from "../AddTodo/AddTodo";
 import Quote from "../Quote/Quote";
-import DetailTodo from "../DetailTodo/DetailTodo";
+import DetailTodoList from "../DetailTodoList/DetailTodoList";
 
 function MainPresenter({ pageState }) {
   return (
@@ -17,7 +17,7 @@ function MainPresenter({ pageState }) {
         </S.ContainerLeft>
         <S.ContainerRight>
           {pageState === MODE.ADD && <AddTodo />}
-          {pageState === MODE.EDIT && <DetailTodo />}
+          {pageState === MODE.EDIT && <DetailTodoList />}
         </S.ContainerRight>
       </S.Container>
       <S.Footer>
