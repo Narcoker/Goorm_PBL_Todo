@@ -84,7 +84,7 @@ export const DataWrapper = styled.div`
   display: flex;
   position: relative;
 `;
-export const Date = styled.p`
+export const Date = styled.div`
   flex: 1;
 `;
 

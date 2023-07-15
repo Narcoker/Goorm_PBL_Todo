@@ -26,4 +26,6 @@ export const BackgroundVideo = styled.video`
   position: relative;
   object-fit: cover;
   z-index: -1;
+  width: inherit;
+  height: inherit;
 `;

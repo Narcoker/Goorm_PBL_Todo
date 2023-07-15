@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DetailTodoListPresenter from "./DetailTodoList.presenter";
 import { useDispatch, useSelector } from "react-redux";
 import { setModeADD } from "../../../app/PageMode/pageModeSlice";
@@ -10,7 +10,6 @@ function DetailTodoListContainer() {
 
   const dispatch = useDispatch();
   const selectedTodo = useSelector((state) => state.todoList.selectedTodo);
-  const todolist = useSelector((state) => state.todoList);
   const handleSetModeADD = () => {
     dispatch(setModeADD());
   };
@@ -26,9 +25,6 @@ function DetailTodoListContainer() {
     e.key === "Enter" && handleAddDetailTodo(uuid, text);
   };
 
-  useEffect(() => {
-    console.log(todolist);
-  }, [selectedTodo, todolist]);
   return (
     <DetailTodoListPresenter
       isFocused={isFocused}
