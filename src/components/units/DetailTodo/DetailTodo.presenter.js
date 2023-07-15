@@ -9,23 +9,21 @@ function DetailTodoListPresenter({
   handleRemoveTodo,
   handleEditDetailTodoStartTime,
   handleEditDetailTodoEndTime,
+  handleChangeDetailTodoState,
 }) {
-  const func = () => {};
   return (
     <S.Wrapper $state={detailTodo.state}>
       <S.ContentsLeft>
         <S.StateCircle
           $state={detailTodo.state}
-          // onClick={(e) => {
-          //   handleChangeTodoState(e, detailTodo.uuid);
-          // }}
+          onClick={(e) => {
+            handleChangeDetailTodoState(e, todoUUID, detailTodo.uuid);
+          }}
         />
       </S.ContentsLeft>
       <S.ContentsCenter>
         <S.Title $state={detailTodo.state}>{detailTodo.title}</S.Title>
         <S.DataWrapper>
-          {/* <S.Date>시작 일: {detailTodo.startDate}</S.Date>
-          <S.Date $right>종료 일: {detailTodo.endDate}</S.Date> */}
           <S.Date>
             <DateSelector
               time={new Date(detailTodo.startDate)}

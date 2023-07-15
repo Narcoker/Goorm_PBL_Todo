@@ -21,70 +21,61 @@ export const todoListSlice = createSlice({
         details: [],
       });
     },
+
     editTodo: (state) => {
       console.log("editTodo");
     },
+
     editTodoStartTime: (state, { payload: { todoUUID, time } }) => {
       console.log("editTodoStartTime");
-      console.log(todoUUID);
-      console.log(time);
       const targetIndex = state.todoList.findIndex(
         (todo) => todo.uuid === todoUUID
       );
       state.todoList[targetIndex].startDate = time;
     },
+
     editTodoEndTime: (state, { payload: { todoUUID, time } }) => {
       console.log("editTodoEndTime");
-      console.log(todoUUID);
-      console.log(time);
       const targetIndex = state.todoList.findIndex(
         (todo) => todo.uuid === todoUUID
       );
       state.todoList[targetIndex].endDate = time;
     },
+
     changeTodoState: (state, { payload: uuid }) => {
       console.log("changeTodoState");
-      const targetIndex = state.todoList.findIndex(
-        (todo) => todo.uuid === uuid
-      );
+      const targetTodo = state.todoList.find((todo) => todo.uuid === uuid);
 
-      switch (state.todoList[targetIndex].state) {
+      switch (targetTodo.state) {
         case WORK_STATE.BEFORE_START:
-          state.todoList[targetIndex].state = WORK_STATE.IN_PROGRESS;
+          targetTodo.state = WORK_STATE.IN_PROGRESS;
           break;
         case WORK_STATE.IN_PROGRESS:
-          state.todoList[targetIndex].state = WORK_STATE.END;
+          targetTodo.state = WORK_STATE.END;
           break;
         case WORK_STATE.END:
-          state.todoList[targetIndex].state = WORK_STATE.BEFORE_START;
+          targetTodo.state = WORK_STATE.BEFORE_START;
           break;
         default:
-          break;
       }
     },
+
     removeTodo: (state, { payload: uuid }) => {
       console.log("removeTodo");
-
-      const targetIndex = state.todoList.findIndex(
-        (todo) => todo.uuid === uuid
-      );
-      targetIndex !== -1 && state.todoList.splice(targetIndex, 1);
+      state.todoList = state.todoList.filter((todo) => todo.uuid !== uuid);
     },
 
     setSelectedTodo: (state, { payload: uuid }) => {
       console.log("setSelectedTodo");
-      const targetIndex = state.todoList.findIndex(
-        (todo) => todo.uuid === uuid
-      );
-      state.selectedTodo = state.todoList[targetIndex];
+      const targetTodo = state.todoList.find((todo) => todo.uuid === uuid);
+      state.selectedTodo = targetTodo;
     },
 
     // 세부 계획 Actions
     addDetailTodo: (state, { payload: { uuid, text } }) => {
-      const targetIndex = state.todoList.findIndex(
-        (todo) => todo.uuid === uuid
-      );
-      state.todoList[targetIndex].details = [
+      const targetTodo = state.todoList.find((todo) => todo.uuid === uuid);
+
+      targetTodo.details = [
         {
           uuid: uuidv4(),
           title: text,
@@ -92,12 +83,12 @@ export const todoListSlice = createSlice({
           endDate: new Date().toISOString(),
           state: WORK_STATE.BEFORE_START,
         },
-        ...state.todoList[targetIndex].details,
+        ...targetTodo
       ];
-      state.selectedTodo.details = state.todoList[targetIndex].details;
-      state.todoList[targetIndex].editMode =
-        state.selectedTodo.editMode = false;
+      targetTodo.editMode = false;
+      state.selectedTodo = targetTodo;
     },
+
     editedDetailTodo: (state) => {
       console.log("editedDetailTodo");
     },
@@ -128,6 +119,7 @@ export const todoListSlice = createSlice({
           state.selectedTodo.startDate = time;
       }
     },
+
     editDetailTodoEndTime: (
       state,
       { payload: { todoUUID, detailTodoUUID, time } }
@@ -154,6 +146,43 @@ export const todoListSlice = createSlice({
           time;
       }
     },
+
+    changeDetailTodoState: (
+      state,
+      { payload: { todoUUID, detailTodoUUID } }
+    ) => {
+      const targetTodo = state.todoList.find((todo) => todo.uuid === todoUUID);
+      const targetDetailTodo = targetTodo.details.find(
+        (todo) => todo.uuid === detailTodoUUID
+      );
+
+      const updateState = (prevState, nextStateMap) => {
+        return nextStateMap[prevState] || prevState;
+      };
+
+      targetDetailTodo.state = updateState(targetDetailTodo.state, {
+        [WORK_STATE.BEFORE_START]: WORK_STATE.IN_PROGRESS,
+        [WORK_STATE.IN_PROGRESS]: WORK_STATE.END,
+        [WORK_STATE.END]: WORK_STATE.BEFORE_START,
+      });
+
+      const isAllStateEqual = (details, state) =>
+        details.every((detail) => detail.state === state);
+
+      switch (true) {
+        case isAllStateEqual(targetTodo.details, WORK_STATE.BEFORE_START):
+          targetTodo.state = WORK_STATE.BEFORE_START;
+          break;
+        case isAllStateEqual(targetTodo.details, WORK_STATE.END):
+          targetTodo.state = WORK_STATE.END;
+          break;
+        default:
+          targetTodo.state = WORK_STATE.IN_PROGRESS;
+      }
+
+      state.selectedTodo = targetTodo;
+    },
+
     removeDetailTodo: (state, { payload: { todoUUID, detailTodoUUID } }) => {
       console.log("removeDetailTodo");
       const targetTodoIndex = state.todoList.findIndex(
@@ -189,6 +218,7 @@ export const {
   editedDetailTodo,
   editDetailTodoStartTime,
   editDetailTodoEndTime,
+  changeDetailTodoState,
   removeDetailTodo,
 } = todoListSlice.actions;
 export default todoListSlice.reducer;

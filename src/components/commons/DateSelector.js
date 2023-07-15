@@ -24,6 +24,7 @@ function DateSelector({
         height: "100%",
         lineHeight: "100%",
         cursor: "pointer",
+        zIndex: "2000",
       }}
       onClick={onClick}
       ref={ref}
