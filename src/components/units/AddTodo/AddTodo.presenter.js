@@ -11,9 +11,7 @@ function AddTodoPresenter({
   return (
     <S.Wrapper>
       <Logo />
-      <S.Paragraph $big>
-        할 일을 입력하고 당신의 하루를 계획해보세요
-      </S.Paragraph>
+      <S.Paragraph $big>할 일을 입력하고 당신의 하루를 계획해보세요</S.Paragraph>
       <S.Paragraph>천천히 시작해도 괜찮아요</S.Paragraph>
       <S.InputWork
         value={inputTodo}

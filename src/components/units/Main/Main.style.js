@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 0 100px;
 `;
 
 export const Container = styled.div`
@@ -16,12 +17,16 @@ export const Container = styled.div`
 
 export const ContainerLeft = styled.div`
   flex: 1;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ContainerRight = styled.div`
   flex: 1;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Footer = styled.div`

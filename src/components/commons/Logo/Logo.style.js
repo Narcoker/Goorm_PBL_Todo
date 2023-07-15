@@ -8,7 +8,7 @@ export const Logo = styled.h1`
   color: white;
   position: relative;
   top: 0;
-  font-size: 80px;
+  font-size: clamp(80px, 4.1667vw, 300px);
   font-family: "Inter", sans-serif;
   font-weight: 400;
   margin-bottom: 55px;

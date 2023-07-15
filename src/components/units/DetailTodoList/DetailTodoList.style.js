@@ -2,14 +2,12 @@ import styled from "styled-components";
 import { fadeIn } from "../../commons/keyframes";
 
 export const Wrapper = styled.div`
-  width: 68%;
-  height: 80%;
+  width: 35vw;
+  height: 70vh;
   background-color: rgba(217, 217, 217, 0.22);
   padding: 52px 33px;
   border-radius: 20px;
-  position: absolute;
-  top: 132px;
-  left: 180px;
+  position: relative;
   overflow: auto;
   animation: ${fadeIn} ease both 1.5s;
 `;
@@ -74,8 +72,7 @@ export const InputWrapper = styled.div`
   gap: 10px;
   padding: 0 10px;
   background-color: white;
-  border: ${(props) =>
-    props.$isFocused ? "2px solid #336AD3" : "2px solid white"};
+  border: ${(props) => (props.$isFocused ? "2px solid #336AD3" : "2px solid white")};
 `;
 
 export const InputDetailTodo = styled.input`

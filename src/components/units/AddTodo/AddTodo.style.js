@@ -11,13 +11,14 @@ export const Wrapper = styled.div`
 
 export const Paragraph = styled.p`
   color: #bbbbbb;
-  font-size: ${(props) => (props.$big ? "1.5em" : "1em")};
+  font-size: ${(props) =>
+    props.$big ? "clamp(24px, 1.1vw, 80px)" : "clamp(16px, 1.02vw, 30px)"};
   animation: 1.5s ${fadeIn} both ease 1s;
   user-select: none;
 `;
 
 export const InputWork = styled.input`
-  width: 70%;
+  width: 130%;
   height: 50px;
   background-color: rgba(255, 255, 255, 0.46);
   border-radius: 15px;

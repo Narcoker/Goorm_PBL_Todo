@@ -21,7 +21,11 @@ function DetailTodoListPresenter({
         <S.DetailTodoWrapper>
           {selectedTodo.details.length ? (
             selectedTodo.details.map((detailTodo) => (
-              <DetailTodo key={detailTodo.uuid} todoUUID={selectedTodo.uuid} detailTodo={detailTodo} />
+              <DetailTodo
+                key={detailTodo.uuid}
+                todoUUID={selectedTodo.uuid}
+                detailTodo={detailTodo}
+              />
             ))
           ) : (
             <S.NotFoundTodoList>등록된 세부 계획이 없습니다</S.NotFoundTodoList>
@@ -34,14 +38,10 @@ function DetailTodoListPresenter({
             onChange={(e) => handleInputTodo(e)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            onKeyUp={(e) =>
-              handleKeyUpEnter(e, selectedTodo.uuid, inputDetailTodo)
-            }
+            onKeyUp={(e) => handleKeyUpEnter(e, selectedTodo.uuid, inputDetailTodo)}
           />
           <S.SummitButton
-            onClick={() =>
-              handleAddDetailTodo(selectedTodo.uuid, inputDetailTodo)
-            }
+            onClick={() => handleAddDetailTodo(selectedTodo.uuid, inputDetailTodo)}
           >
             등록
           </S.SummitButton>
