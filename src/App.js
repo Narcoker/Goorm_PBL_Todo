@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Main from "./pages/Main";
-import Landing from "./pages/Landing";
 import { Provider } from "react-redux";
-import {store} from "./app/store";
+import { store } from "./app/store";
+import Landing from "./pages/Landing/Landing";
+import Main from "./pages/Main/Main";
 
 function App() {
   return (

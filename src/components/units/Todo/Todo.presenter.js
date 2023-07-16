@@ -32,8 +32,6 @@ function TodoPresenter({
           placeholder="오늘은 어떤 계획을 세우실 건가요?"
         />
         <S.DataWrapper>
-          {/* <S.Date>시작 일: {todo.startDate}</S.Date>
-          <S.Date $right>종료 일: {todo.endDate}</S.Date> */}
           <S.Date>
             <DateSelector
               time={new Date(todo.startDate)}

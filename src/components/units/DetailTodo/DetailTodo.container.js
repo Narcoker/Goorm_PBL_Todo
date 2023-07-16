@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DetailTodoPresenter from "../DetailTodo/DetailTodo.presenter";
+import { useDispatch } from "react-redux";
 import {
   changeDetailTodoState,
   editDetailTodoEndTime,
@@ -7,12 +8,11 @@ import {
   editedDetailTodo,
   removeDetailTodo,
 } from "../../../app/TodoList/todoListSlice";
-import { useDispatch } from "react-redux";
 
 function DetailTodoListContainer({ detailTodo, todoUUID }) {
-  const dispatch = useDispatch();
-
   const [detailTodoTitle, setDetailTodoTitle] = useState(detailTodo.title);
+
+  const dispatch = useDispatch();
 
   const handleDetailTodoTitle = (e, todoUUID, detailTodoUUID) => {
     const newDetailTitle = e.target.value;

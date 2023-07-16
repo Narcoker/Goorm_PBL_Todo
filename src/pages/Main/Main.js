@@ -1,5 +1,6 @@
 import React from "react";
-import MainContainer from "../components/units/Main/Main.container";
+import MainContainer from "./Main.container";
+
 function Main() {
   return <MainContainer />;
 }

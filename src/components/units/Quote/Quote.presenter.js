@@ -1,4 +1,5 @@
 import * as S from "./Quote.style";
+
 function QuotePresenter({ Quotes, top }) {
   return (
     <S.Slide>

@@ -1,5 +1,6 @@
 import React from "react";
-import LandingContainer from "../components/units/Landing/Landing.container"
+import LandingContainer from "./Landing.container";
+
 function Landing() {
   return <LandingContainer/>;
 }

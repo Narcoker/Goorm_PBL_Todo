@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Wrapper = styled.div`
   display: flex;
-  /* background-image: linear-gradient(-225deg, white 0%, #efe9f0 100%); */
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
@@ -59,7 +58,7 @@ export const StateCircle = styled.div`
   box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: 0.3s;
-
+  
   &:hover {
     transform: scale(1.2);
     box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TodoPresenter from "./Todo.presenter";
 import { useDispatch } from "react-redux";
+import { setModeADD, setModeEDIT } from "../../../app/PageMode/pageModeSlice";
 import {
   changeTodoState,
   editTodo,
@@ -9,7 +10,6 @@ import {
   removeTodo,
   setSelectedTodo,
 } from "../../../app/TodoList/todoListSlice";
-import { setModeADD, setModeEDIT } from "../../../app/PageMode/pageModeSlice";
 
 function TodoContainer({ todo }) {
   const [inputTodoTitle, setInputTodoTitle] = useState(todo.title);

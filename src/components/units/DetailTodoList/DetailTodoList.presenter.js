@@ -1,5 +1,6 @@
 import * as S from "./DetailTodoList.style";
 import DetailTodo from "../DetailTodo/DetailTodo";
+
 function DetailTodoListPresenter({
   isFocused,
   setIsFocused,

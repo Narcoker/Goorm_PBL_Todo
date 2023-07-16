@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./Background.style";
 import BackgroundImageSrc from "../../../static/background.webp";
 import BackgroundVideoSrc from "../../../static/background.mp4";
+
 function BackgroundPresenter() {
   return (
     <S.Wrapper>
