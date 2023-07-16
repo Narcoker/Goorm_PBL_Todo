@@ -1,4 +1,6 @@
-## [구름_PBL] Todo 앱 제작
+## [[구름_PBL] TodoList WebSite](https://narcoker.github.io/Goorm_PBL_Todo/) - 배포 링크
+`반응형 웹이 구현되지 않았습니다.`  
+`체험 시 PC 접속을 권장합니다.`
 
 - 팀: 개인
 - 수행기간: 7/10(월) ~ 7/16(일)
