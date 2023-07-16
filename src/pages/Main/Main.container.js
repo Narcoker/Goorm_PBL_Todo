@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { setTodoList } from "../../app/TodoList/todoListSlice";
 import { setModeADD, setModeEDIT } from "../../app/PageMode/pageModeSlice";
 
-
 function MainContainer() {
   const dispatch = useDispatch();
   const pageState = useSelector((state) => state.pageMode.mode);
@@ -16,7 +15,7 @@ function MainContainer() {
   };
 
   useEffect(() => {
-    const todoList = JSON.parse(window.localStorage.getItem("todoList"));
+    const todoList = JSON.parse(window.localStorage.getItem("todoList") ?? "[]");
     dispatch(setTodoList({ todoList }));
   }, []);
 
