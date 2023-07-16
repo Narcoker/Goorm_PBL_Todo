@@ -10,7 +10,8 @@
 
 ## 최종 결과물
 
-https://github.com/Narcoker/Goorm_PBL_Todo/issues/1#issue-1806582381
+https://github.com/Narcoker/Goorm_PBL_Todo/assets/79975172/1a9ca47c-81ae-42c9-917a-263922395620
+
 
 ## 유저 플로우, 기능
 
