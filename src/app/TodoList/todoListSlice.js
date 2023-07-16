@@ -67,6 +67,7 @@ export const todoListSlice = createSlice({
 
     removeTodo: (state, { payload: uuid }) => {
       state.todoList = state.todoList.filter((todo) => todo.uuid !== uuid);
+      window.localStorage.setItem("todoList", JSON.stringify(state.todoList));
     },
 
     setSelectedTodo: (state, { payload: uuid }) => {
