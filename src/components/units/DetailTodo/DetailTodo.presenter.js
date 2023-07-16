@@ -6,6 +6,8 @@ import DateSelector from "../../commons/DateSelector";
 function DetailTodoListPresenter({
   todoUUID,
   detailTodo,
+  detailTodoTitle,
+  handleDetailTodoTitle,
   handleRemoveTodo,
   handleEditDetailTodoStartTime,
   handleEditDetailTodoEndTime,
@@ -22,7 +24,13 @@ function DetailTodoListPresenter({
         />
       </S.ContentsLeft>
       <S.ContentsCenter>
-        <S.Title $state={detailTodo.state}>{detailTodo.title}</S.Title>
+        <S.Title
+          $state={detailTodoTitle}
+          value={detailTodoTitle}
+          onChange={(e) => {
+            handleDetailTodoTitle(e, todoUUID, detailTodo.uuid);
+          }}
+        />
         <S.DataWrapper>
           <S.Date>
             <DateSelector

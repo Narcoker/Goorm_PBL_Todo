@@ -5,7 +5,8 @@ function DetailTodoListPresenter({
   setIsFocused,
   inputDetailTodo,
   handleSetModeADD,
-  handleInputTodo,
+  handleInputTodoTitle,
+  handleInputDetailTodo,
   handleAddDetailTodo,
   handleKeyUpEnter,
   selectedTodo,
@@ -15,7 +16,13 @@ function DetailTodoListPresenter({
       <S.CloseButton onClick={() => handleSetModeADD()}></S.CloseButton>
       <S.Contents>
         <S.Header>
-          <S.Title>{selectedTodo.title}</S.Title>
+          <S.Title
+            value={selectedTodo.title}
+            onChange={(e) => {
+              handleInputTodoTitle(e, selectedTodo.uuid);
+            }}
+            placeholder="오늘은 어떤 계획을 세우실 건가요?"
+          />
         </S.Header>
 
         <S.DetailTodoWrapper>
@@ -35,7 +42,7 @@ function DetailTodoListPresenter({
         <S.InputWrapper $isFocused={isFocused}>
           <S.InputDetailTodo
             value={inputDetailTodo}
-            onChange={(e) => handleInputTodo(e)}
+            onChange={(e) => handleInputDetailTodo(e)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             onKeyUp={(e) => handleKeyUpEnter(e, selectedTodo.uuid, inputDetailTodo)}

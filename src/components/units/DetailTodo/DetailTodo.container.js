@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import DetailTodoPresenter from "../DetailTodo/DetailTodo.presenter";
 import {
   changeDetailTodoState,
   editDetailTodoEndTime,
   editDetailTodoStartTime,
+  editedDetailTodo,
   removeDetailTodo,
 } from "../../../app/TodoList/todoListSlice";
 import { useDispatch } from "react-redux";
 
 function DetailTodoListContainer({ detailTodo, todoUUID }) {
   const dispatch = useDispatch();
+
+  const [detailTodoTitle, setDetailTodoTitle] = useState(detailTodo.title);
+
+  const handleDetailTodoTitle = (e, todoUUID, detailTodoUUID) => {
+    const newDetailTitle = e.target.value;
+    setDetailTodoTitle(newDetailTitle);
+    dispatch(editedDetailTodo({ todoUUID, detailTodoUUID, newDetailTitle }));
+  };
 
   const handleRemoveTodo = (e, todoUUID, detailTodoUUID) => {
     e.stopPropagation();
@@ -33,6 +42,8 @@ function DetailTodoListContainer({ detailTodo, todoUUID }) {
     <DetailTodoPresenter
       todoUUID={todoUUID}
       detailTodo={detailTodo}
+      detailTodoTitle={detailTodoTitle}
+      handleDetailTodoTitle={handleDetailTodoTitle}
       handleRemoveTodo={handleRemoveTodo}
       handleEditDetailTodoStartTime={handleEditDetailTodoStartTime}
       handleEditDetailTodoEndTime={handleEditDetailTodoEndTime}

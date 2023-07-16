@@ -8,11 +8,9 @@ export const pageModeSlice = createSlice({
   },
   reducers: {
     setModeADD: (state) => {
-      console.log("setModeADD");
       state.mode = MODE.ADD;
     },
     setModeEDIT: (state) => {
-      console.log("setModeEDIT");
       state.mode = MODE.EDIT;
     },
   },

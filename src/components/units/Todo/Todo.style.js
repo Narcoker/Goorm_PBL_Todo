@@ -69,7 +69,7 @@ export const ContentsCenter = styled.div`
   flex: 5;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.input`
   font-weight: 400;
   font-size: 24px;
   margin-bottom: 5px;
@@ -78,11 +78,23 @@ export const Title = styled.h1`
   white-space: nowrap;
   text-decoration: ${(props) =>
     props.$state === WORK_STATE.END ? "line-through" : "none"};
+  background-color: transparent;
+  display: inline-block;
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  padding: 0;
+
+  &:focus {
+    border: 2px solid #336ad3;
+  }
 `;
 
 export const DataWrapper = styled.div`
   display: flex;
   position: relative;
+  padding-left: 4px;
 `;
 export const Date = styled.div`
   flex: 1;

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
 import * as S from "./Todo.style";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import DateSelector from "../../commons/DateSelector";
 
 function TodoPresenter({
   todo,
+  inputTodoTitle,
+  handleInputTodoTitle,
   handleRemoveTodo,
   handleChangeTodoState,
   handleSetModeEDIT,
@@ -22,7 +23,14 @@ function TodoPresenter({
         />
       </S.ContentsLeft>
       <S.ContentsCenter>
-        <S.Title $state={todo.state}>{todo.title}</S.Title>
+        <S.Title
+          $state={inputTodoTitle}
+          value={inputTodoTitle}
+          onChange={(e) => {
+            handleInputTodoTitle(e, todo.uuid);
+          }}
+          placeholder="오늘은 어떤 계획을 세우실 건가요?"
+        />
         <S.DataWrapper>
           {/* <S.Date>시작 일: {todo.startDate}</S.Date>
           <S.Date $right>종료 일: {todo.endDate}</S.Date> */}

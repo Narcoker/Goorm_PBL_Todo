@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TodoPresenter from "./Todo.presenter";
 import { useDispatch } from "react-redux";
 import {
   changeTodoState,
+  editTodo,
   editTodoEndTime,
   editTodoStartTime,
   removeTodo,
@@ -11,7 +12,15 @@ import {
 import { setModeADD, setModeEDIT } from "../../../app/PageMode/pageModeSlice";
 
 function TodoContainer({ todo }) {
+  const [inputTodoTitle, setInputTodoTitle] = useState(todo.title);
+
   const dispatch = useDispatch();
+
+  const handleInputTodoTitle = (e, uuid) => {
+    const newTodoTitle = e.target.value;
+    setInputTodoTitle(newTodoTitle);
+    dispatch(editTodo({ uuid, newTodoTitle }));
+  };
 
   const handleRemoveTodo = (e, uuid) => {
     e.stopPropagation();
@@ -39,9 +48,15 @@ function TodoContainer({ todo }) {
     dispatch(editTodoEndTime({ todoUUID, detailTodoUUID, time }));
   };
 
+  useEffect(()=>{
+    setInputTodoTitle(todo.title);
+  },[todo])
+
   return (
     <TodoPresenter
       todo={todo}
+      inputTodoTitle={inputTodoTitle}
+      handleInputTodoTitle={handleInputTodoTitle}
       handleRemoveTodo={handleRemoveTodo}
       handleChangeTodoState={handleChangeTodoState}
       handleSetModeEDIT={handleSetModeEDIT}

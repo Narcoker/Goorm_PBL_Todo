@@ -44,9 +44,21 @@ export const Contents = styled.div`
 
 export const Header = styled.div``;
 
-export const Title = styled.h1`
+export const Title = styled.input`
   font-size: 1.4em;
   font-weight: 400;
+  display: inline-block;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  outline: none;
+
+  &:focus {
+    &:focus {
+      border: 2px solid #336ad3;
+    }
+  }
 `;
 
 export const DetailTodoWrapper = styled.div`

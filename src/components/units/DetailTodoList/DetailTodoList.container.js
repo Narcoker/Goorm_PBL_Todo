@@ -2,18 +2,26 @@ import React, { useState } from "react";
 import DetailTodoListPresenter from "./DetailTodoList.presenter";
 import { useDispatch, useSelector } from "react-redux";
 import { setModeADD } from "../../../app/PageMode/pageModeSlice";
-import { addDetailTodo } from "../../../app/TodoList/todoListSlice";
+import { addDetailTodo, editTodo } from "../../../app/TodoList/todoListSlice";
 
 function DetailTodoListContainer() {
-  const [isFocused, setIsFocused] = useState(false);
-  const [inputDetailTodo, setInputDetailTodo] = useState("");
-
   const dispatch = useDispatch();
   const selectedTodo = useSelector((state) => state.todoList.selectedTodo);
+
+  const [isFocused, setIsFocused] = useState(false);
+  const [inputTodo, setInputTodo] = useState(selectedTodo.title);
+  const [inputDetailTodo, setInputDetailTodo] = useState("");
+
+  const handleInputTodoTitle = (e, uuid) => {
+    const newTodoTitle = e.target.value;
+    setInputTodo(newTodoTitle);
+    dispatch(editTodo({ uuid, newTodoTitle }));
+  };
+
   const handleSetModeADD = () => {
     dispatch(setModeADD());
   };
-  const handleInputTodo = (e) => {
+  const handleInputDetailTodo = (e) => {
     setInputDetailTodo(e.target.value);
   };
   const handleAddDetailTodo = (uuid, text) => {
@@ -31,7 +39,9 @@ function DetailTodoListContainer() {
       setIsFocused={setIsFocused}
       inputDetailTodo={inputDetailTodo}
       handleSetModeADD={handleSetModeADD}
-      handleInputTodo={handleInputTodo}
+      inputTodo={inputTodo}
+      handleInputTodoTitle={handleInputTodoTitle}
+      handleInputDetailTodo={handleInputDetailTodo}
       handleAddDetailTodo={handleAddDetailTodo}
       handleKeyUpEnter={handleKeyUpEnter}
       selectedTodo={selectedTodo}
