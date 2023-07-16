@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Narcoker/Goorm_PBL_Todo/static/css/main.6b45423b.css",
+    "main.js": "/Narcoker/Goorm_PBL_Todo/static/js/main.e5bc8a56.js",
+    "static/js/787.63e47474.chunk.js": "/Narcoker/Goorm_PBL_Todo/static/js/787.63e47474.chunk.js",
+    "static/media/background.mp4": "/Narcoker/Goorm_PBL_Todo/static/media/background.50d56c87c9aa1cbf32df.mp4",
+    "static/media/background.webp": "/Narcoker/Goorm_PBL_Todo/static/media/background.cb40b7f4d11527e54c78.webp",
+    "index.html": "/Narcoker/Goorm_PBL_Todo/index.html",
+    "main.6b45423b.css.map": "/Narcoker/Goorm_PBL_Todo/static/css/main.6b45423b.css.map",
+    "main.e5bc8a56.js.map": "/Narcoker/Goorm_PBL_Todo/static/js/main.e5bc8a56.js.map",
+    "787.63e47474.chunk.js.map": "/Narcoker/Goorm_PBL_Todo/static/js/787.63e47474.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b45423b.css",
+    "static/js/main.e5bc8a56.js"
+  ]
+}
