@@ -1,6 +1,19 @@
-## [[구름_PBL] TodoList WebSite](https://narcoker.github.io/Goorm_PBL_Todo/) - 배포 링크
-`반응형 웹이 구현되지 않았습니다.`  
-`체험 시 PC 접속을 권장합니다.`
+## [[구름\_PBL] TodoList WebSite](https://narcoker.github.io/Goorm_PBL_Todo/) - 배포 링크
+
+<div align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>  
+  <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
+   <img src="https://img.shields.io/badge/ReduxToolkit-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
+   <br/>
+  <img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white"/>  
+  <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/> 
+  <br/>
+  모바일 버전 UI가 구현되지 않았습니다.
+  <br/>  
+체험 시 PC 접속을 권장합니다.
+   
+</div>
 
 - 팀: 개인
 - 수행기간: 7/10(월) ~ 7/16(일)
@@ -13,7 +26,6 @@
 ## 최종 결과물
 
 https://github.com/Narcoker/Goorm_PBL_Todo/assets/79975172/1a9ca47c-81ae-42c9-917a-263922395620
-
 
 ## 유저 플로우, 기능
 
